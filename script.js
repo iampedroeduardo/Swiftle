@@ -162,7 +162,7 @@ function Testa(){
         }
         else{
             pontos++;
-            Reinicia();
+            setTimeOut(Reinicia,3000);
         }
     }
     else{
