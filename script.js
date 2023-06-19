@@ -287,7 +287,6 @@ function Toca(){
     }
     clearInterval(intervalo);
     audio.play();
-    setTimeOut(3000);
     intervalo=setInterval(Conta,50);
 }
 function Derrota(){
