@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiftle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="titulo">
+        <p>Swiftle</p>
+        <div class="menu" onclick="Menu();">
+            <svg width="20" height="18" class="linhas" style="display: block;">
+                <line x1="0" y1="1" x2="20" y2="1" stroke="white" stroke-width="2"></line>
+                <line x1="0" y1="9" x2="20" y2="9" stroke="white" stroke-width="2"></line>
+                <line x1="0" y1="17" x2="20" y2="17" stroke="white" stroke-width="2"></line>
+            </svg>
+            <svg width="20" height="18" class="xis" style="display: none;">
+                <line x1="1" y1="1" x2="18" y2="18" stroke="white" stroke-width="2"></line>
+                <line x1="2" y1="18" x2="18" y2="1" stroke="white" stroke-width="2"></line>
+            </svg>
+        </div>
+    </div>
+    <div class="main" style="display: block;">
+        <div class="svg">
+            <svg width="80" height="80">
+                <circle r="39" cx="40" cy="40" fill="rgb(228, 225, 225)" stroke="gray" stroke-width="2"></circle>
+                <circle r="37" cx="40" cy="40" fill=" rgb(228, 225, 225)" stroke="rgb(3, 210, 210)" stroke-width="6" id="circle"></circle>
+                <polygon points="20,15 70,40 20,65" fill="gray" onclick="Toca();" id="play"></polygon>
+            </svg>
+            <p class="resposta"></p>
+            <p class="pontos"></p>
+            <p class="play" onclick="Reinicia();">Jogar Novamente</p>
+        </div>
+    </div>
+    <div class="nav" style="display: none;">
+        <div class="modo">
+            <p class="title">Modo: </p>
+            <div class="radio">
+                <svg width="26" height="26" onclick="Modo();">
+                    <circle r="12" cx="13" cy="13" fill="rgb(228, 225, 225)" stroke="black" stroke-width="2"></circle>
+                    <circle r="8" cx="13" cy="13" fill="black" class="normal" style="display: block;"></circle>
+                </svg>
+                <p>Normal</p>
+                <svg width="26" height="26" onclick="Modo();">
+                    <circle r="12" cx="13" cy="13" fill="rgb(228, 225, 225)" stroke="black" stroke-width="2"></circle>
+                    <circle r="8" cx="13" cy="13" fill="black" class="maratona" style="display: none;"></circle>
+                </svg>
+                <p>Maratona</p>
+            </div>
+        </div>
+        <div class="albums">
+            <p class="title">Álbuns:</p>
+            <div>
+                <svg width="30" height="30" onclick="Debut();">
+                    <rect x="3" y="3" width="26" height="26" fill="lawngreen" rx="7" ry="7" stroke="lawngreen" stroke="3" id="quaddebut"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" style="display: block;" class="debut"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" style="display: block;" class="debut"></line>
+                </svg>
+                <p style="color: lawngreen;">Taylor Swift</p>
+            </div>
+            <div>
+                <svg width="30" height="30" onclick="Fearless();">
+                    <rect x="3" y="3" width="26" height="26" fill="#FFFF00" rx="7" ry="7" stroke="#FFFF00" stroke="3" id="quadfearless"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" class="fearless"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" class="fearless"></line>
+                </svg>
+                <p style="color: #FFFF00;">Fearless</p>
+            </div>
+            <div>
+                <svg width="30" height="30" onclick="SpeakNow();">
+                    <rect x="3" y="3" width="26" height="26" fill="#D500FF" rx="7" ry="7" stroke="#D500FF" stroke="3" id="quadspeaknow"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" class="speaknow"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" class="speaknow"></line>
+                </svg>
+                <p style="color: #D500FF;">Speak Now</p>
+            </div>
+            <div>
+                <svg width="30" height="30" onclick="Red();">
+                    <rect x="3" y="3" width="26" height="26" fill="red" rx="7" ry="7" stroke="red" stroke="3" id="quadred"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" class="red"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" class="red"></line>
+                </svg>
+                <p style="color: red;">Red</p>
+            </div>
+            <div>
+                <svg width="30" height="30" onclick="A1989();">
+                    <rect x="3" y="3" width="26" height="26" fill="cyan" rx="7" ry="7" stroke="cyan" stroke="3" id="quada1989"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" class="a1989"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" class="a1989"></line>
+                </svg>
+                <p style="color: cyan;">1989</p>
+            </div>
+            <div>
+                <svg width="30" height="30" onclick="Reputation();">
+                    <rect x="3" y="3" width="26" height="26" fill="black" rx="7" ry="7" stroke="black" stroke="3" id="quadreputation"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" class="reputation"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" class="reputation"></line>
+                </svg>
+                <p style="color: black;">Reputation</p>
+            </div>
+            <div>
+                <svg width="30" height="30" onclick="Lover();">
+                    <rect x="3" y="3" width="26" height="26" fill="#ff00c8" rx="7" ry="7" stroke="#ff00c8" stroke="3" id="quadlover"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" class="lover"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" class="lover"></line>
+                </svg>
+                <p style="color: #ff00c8;">Lover</p>
+            </div>
+            <div>
+                <svg width="30" height="30" onclick="Folklore();">
+                    <rect x="3" y="3" width="26" height="26" fill="gray" rx="7" ry="7" stroke="gray" stroke="3" id="quadfolklore"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" class="folklore"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" class="folklore"></line>
+                </svg>
+                <p style="color: gray;">Folklore</p>
+            </div>
+            <div>
+                <svg width="30" height="30" onclick="Evermore();">
+                    <rect x="3" y="3" width="26" height="26" fill="rgb(141, 107, 53)" rx="7" ry="7" stroke="rgb(141, 107, 53)" stroke="3" id="quadevermore"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" class="evermore"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" class="evermore"></line>
+                </svg>
+                <p style="color: rgb(141, 107, 53);">Evermore</p>
+            </div>
+            <div>
+                <svg width="30" height="30" onclick="Midnights();">
+                    <rect x="3" y="3" width="26" height="26" fill="rgb(0, 0, 176)" rx="7" ry="7" stroke="rgb(0, 0, 176)" stroke="3" id="quadmidnights"></rect>
+                    <line x1="10" y1="19" x2="15" y2="23" stroke="white" stroke-width="3" class="midnights"></line>
+                    <line x1="15" y1="25" x2="24" y2="10" stroke="white" stroke-width="3" class="midnights"></line>
+                </svg>
+                <p style="color: rgb(0, 0, 176);">Midnights</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
