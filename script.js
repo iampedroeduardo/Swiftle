@@ -18,7 +18,7 @@ function CriaInputs(){
         divp.setAttribute("class","principal")
         CriaDatalist(c);
         div=document.createElement("div");
-        div.setAttribute("class",puase"disabled");
+        div.setAttribute("class","disabled");
         div.setAttribute("id","div"+c);
         input=document.createElement("input");
         input.setAttribute("id","input"+c);
