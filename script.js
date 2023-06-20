@@ -23,7 +23,6 @@ function CriaInputs(){
         input=document.createElement("input");
         input.setAttribute("id","input"+c);
         input.setAttribute("onfocus","Lista("+c+");");
-        input.setAttribute("onblur","ListaFalse("+c+");");
         input.setAttribute("oninput","TestaLista();");
         input.setAttribute("onkeydown","Enter();")
         input.disabled=true;
@@ -82,6 +81,7 @@ function Sorteia(){
     musica=todas[n];
     audio="audio/"+musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")+".mp3";
     audio= new Audio(audio);
+    audio.preload="auto";
     if(!modo){
         n=Math.floor(Math.random()*120);
         audio.currentTime=n;
@@ -234,7 +234,6 @@ function CriaDatalist(n){
 }
 function Option(n){
     option=document.getElementById("option"+(chance-1)+n);
-    console.log(option);
     input.value=option.innerHTML;
 }
 function Lista(n){
@@ -255,7 +254,6 @@ function TestaLista(){
 }
 function Enter(){
     tecla=event.key;
-    console.log(tecla);
     if(tecla=="Enter"){
         Testa();
     }
