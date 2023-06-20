@@ -23,6 +23,7 @@ function CriaInputs(){
         input=document.createElement("input");
         input.setAttribute("id","input"+c);
         input.setAttribute("onfocus","Lista("+c+");");
+        input.setAttribute("onblur","ListaFalse("+c+");");
         input.setAttribute("oninput","TestaLista();");
         input.setAttribute("onkeydown","Enter();")
         input.disabled=true;
@@ -79,7 +80,6 @@ function Albums(){
 function Sorteia(){
     n=Math.floor(Math.random()*todas.length);
     musica=todas[n];
-    audio.pause();
     audio="audio/"+musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")+".mp3";
     audio= new Audio(audio);
     if(!modo){
@@ -123,6 +123,7 @@ function Reinicia(){
         inputs.parentNode.removeChild(inputs);
     }
     chance=0;
+    audio.pause();
     clearInterval(intervalo);
     Prepara();
     p=document.querySelector(".pontos");
