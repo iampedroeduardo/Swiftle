@@ -18,7 +18,7 @@ function CriaInputs(){
         divp.setAttribute("class","principal")
         CriaDatalist(c);
         div=document.createElement("div");
-        div.setAttribute("class","disabled");
+        div.setAttribute("class",puase"disabled");
         div.setAttribute("id","div"+c);
         input=document.createElement("input");
         input.setAttribute("id","input"+c);
@@ -79,7 +79,7 @@ function Albums(){
 function Sorteia(){
     n=Math.floor(Math.random()*todas.length);
     musica=todas[n];
-    audio.puase();
+    audio.pause();
     audio="audio/"+musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")+".mp3";
     audio= new Audio(audio);
     if(!modo){
