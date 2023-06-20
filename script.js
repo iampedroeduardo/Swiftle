@@ -23,7 +23,6 @@ function CriaInputs(){
         input=document.createElement("input");
         input.setAttribute("id","input"+c);
         input.setAttribute("onfocus","Lista("+c+");");
-        input.setAttribute("onblur","ListaFalse("+c+");");
         input.setAttribute("oninput","TestaLista();");
         input.setAttribute("onkeydown","Enter();")
         input.disabled=true;
@@ -123,7 +122,6 @@ function Reinicia(){
         inputs.parentNode.removeChild(inputs);
     }
     chance=0;
-    audio.pause();
     clearInterval(intervalo);
     Prepara();
     p=document.querySelector(".pontos");
