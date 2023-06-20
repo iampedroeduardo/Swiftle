@@ -79,6 +79,7 @@ function Albums(){
 function Sorteia(){
     n=Math.floor(Math.random()*todas.length);
     musica=todas[n];
+    audio.puase();
     audio="audio/"+musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")+".mp3";
     audio= new Audio(audio);
     if(!modo){
