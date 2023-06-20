@@ -145,7 +145,7 @@ function Reinicia(){
 }
 function Testa(){
     chute=input.value;
-    if(chute==musica){
+    if(chute.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")==musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")){
         input.style="background-color: lawngreen; color: white;";
         div.setAttribute("class","disabled");
         datalist.style="display:none";
