@@ -79,9 +79,7 @@ function Albums(){
 function Sorteia(){
     n=Math.floor(Math.random()*todas.length);
     musica=todas[n];
-    audio="audio/"+musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")+".mp3";
-    audio= new Audio(audio);
-    document.querySelector("body").appendChild(audio);
+    audio=document.getElementById(musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")",""));
     if(!modo){
         n=Math.floor(Math.random()*120);
         audio.currentTime=n;
@@ -474,6 +472,25 @@ function Midnights(){
         midnightstof=!midnightstof;
     }
 }
+function Audios(){
+    todoss=todoss.concat(debut);
+    todoss=todoss.concat(fearless);
+    todoss=todoss.concat(speaknow);
+    todoss=todoss.concat(red);
+    todoss=todoss.concat(a1989);
+    todoss=todoss.concat(reputation);
+    todoss=todoss.concat(lover);
+    todoss=todoss.concat(folklore);
+    todoss=todoss.concat(evermore);
+    todoss=todoss.concat(midnights);
+    for(c=0;c<todoss.length;c++){
+        tag=document.createElement("audio");
+        tag.setAttribute("id",todoss[c].toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")",""));
+        tag.setAttribute("src","audio/"+todoss[c].toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")+".mp3");
+        tag.setAttribute("preload","auto");
+        document.querySelector("body").appendChild(tag);
+    }
+}
 var debut=["Teardrops On My Guitar","Tim McGraw","Picture To Burn","Cold As You","Marys's Song (Oh My,My)","Our Song","A Place In This World","Tied Together With A Smile","The Outside","Stay Beautiful","Should've Said No","I'm Only Me When I'm With You","Invisible","A Perfectly Good Heart"];
 var fearless=["Fearless","Fifteen","Forever And Always","The Way I Loved You","You Belong With Me","Hey Stephen","The Other Side Of The Door","Love Story","Change","The Best Day","White Horse","Breathe","You're Not Sorry","Tell Me Why","Jump Then Fall","Untouchable","Come In With The Rain","Today Was A Fairytale","Mr. Perfectly Fine","You All Over Me","That's When","Don't You","Bye Bye Baby","We Were Happy","Superstar"];
 var speaknow=["Mine","Sparks Fly","Speak Now","Better Than Revenge","Back To December","Dear John","The Story Of Us","Mean","Ours","If This Was A Movie","Superman","Never Grow Up","Enchanted","Last Kiss","Innocent","Haunted","Long Live"];
@@ -484,6 +501,7 @@ var lover=["I Forgot That You Existed","Cruel Summer","Lover","The Man","The Arc
 var folklore=["the 1","cardigan","the last great american dynasty","exile","my tears ricochet","mirrorball","seven","august","this is me trying","illicit affairs","invisible string","mad woman","epiphany","betty","peace","hoax","the lakes"];
 var evermore=["willow","champagne problems","gold rush","'tis the damn season","tolerate it","no body, no crime","happiness","dorothea","coney island","ivy","cowboy like me","long story short","marjorie","closure","evermore","right where you left me","it's time to go"];
 var midnights=["Lavender Haze","Maroon","Anti-Hero","Snow On The Beach","You're On Your Own, Kid","Midnight Rain","Question...?","Bejeweled","Vigilante Shit","Labyrinth","Karma","Sweet Nothing","Mastermind","The Great War","Bigger Than The Whole Sky","Paris","High Infidelity","Glitch","Would've, Could've, Should've","Dear Reader","Hits Different"];
-var todas=[], tocadas=[], chance=0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos=0, multi, menu=true, modo=true;
+var todas=[], tocadas=[], todoss=[], chance=0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos=0, multi, menu=true, modo=true;
 var debuttof=true, fearlesstof=true, speaknowtof=true, redtof=true, a1989tof=true, reputationtof=true, lovertof=true, folkloretof=true, evermoretof=true, midnightstof=true;
+Audios();
 Prepara();
