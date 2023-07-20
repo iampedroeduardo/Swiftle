@@ -81,7 +81,7 @@ function Sorteia(){
     musica=todas[n];
     audio="audio/"+musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")+".mp3";
     audio= new Audio(audio);
-    audio.preload="auto";
+    document.querySelector("body").appendChild(audio);
     if(!modo){
         n=Math.floor(Math.random()*120);
         audio.currentTime=n;
