@@ -39,6 +39,20 @@ function CriaInputs(){
     }
     document.querySelector(".main").appendChild(inputs);
 }
+function SimplificaNome(nome){
+    return nome.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","");
+}
+function TestaAlbum(album,chute,musica){
+    tof=false;
+    if(album.includes(musica)){
+        for(let i=0;i<album.length;i++){
+            if(SimplificaNome(album[i])==SimplificaNome(chute)){
+                tof=true;
+            }
+        }
+    }
+    return tof;
+}
 function Albums(){
     if(debuttof){
         todas=todas.concat(debut);
@@ -79,7 +93,7 @@ function Albums(){
 function Sorteia(){
     n=Math.floor(Math.random()*todas.length);
     musica=todas[n];
-    audio="audio/"+musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")+".mp3";
+    audio="audio/"+SimplificaNome(musica)+".mp3";
     audio= new Audio(audio);
     audio.preload="auto";
     if(!modo){
@@ -145,7 +159,7 @@ function Reinicia(){
 }
 function Testa(){
     chute=input.value;
-    if(chute.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")==musica.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","")){
+    if(SimplificaNome(chute)==SimplificaNome(musica)){
         input.style="background-color: lawngreen; color: white;";
         div.setAttribute("class","disabled");
         datalist.style="display:none";
@@ -170,7 +184,7 @@ function Testa(){
             div.setAttribute("class","disabled");
             input.disabled=true;
             datalist.style="display:none";
-            if(debut.indexOf(chute)!=-1 && debut.indexOf(musica)!=-1 || fearless.indexOf(chute)!=-1 && fearless.indexOf(musica)!=-1 || speaknow.indexOf(chute)!=-1 && speaknow.indexOf(musica)!=-1 || red.indexOf(chute)!=-1 && red.indexOf(musica)!=-1 || a1989.indexOf(chute)!=-1 && a1989.indexOf(musica)!=-1 || reputation.indexOf(chute)!=-1 && reputation.indexOf(musica)!=-1 || lover.indexOf(chute)!=-1 && lover.indexOf(musica)!=-1 || folklore.indexOf(chute)!=-1 && folklore.indexOf(musica)!=-1 || evermore.indexOf(chute)!=-1 && evermore.indexOf(musica)!=-1 || midnights.indexOf(chute)!=-1 && midnights.indexOf(musica)!=-1){
+            if(TestaAlbum(debut,chute,musica) || TestaAlbum(fearless,chute,musica) || TestaAlbum(speaknow,chute,musica) ||  TestaAlbum(red,chute,musica) || TestaAlbum(a1989,chute,musica) || TestaAlbum(reputation,chute,musica) || TestaAlbum(lover,chute,musica) || TestaAlbum(folklore,chute,musica) || TestaAlbum(evermore,chute,musica) || TestaAlbum(midnights,chute,musica)){
                 input.style="background-color: yellow; color: black;";
             }
             else{
@@ -244,7 +258,7 @@ function TestaLista(){
     Lista(chance-1);
     for(var c=0;c<todas.length;c++){
         option=document.getElementById("option"+(chance-1)+c);
-        if(option.innerHTML.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","").indexOf(input.value.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")",""))==-1){
+        if(SimplificaNome(option.innerHTML).indexOf(SimplificaNome(input.value))==-1){
             option.style="display:none;";
         }
         else{
