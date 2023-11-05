@@ -90,7 +90,7 @@ input:disabled{
     margin-top: 10px;
     font-size: 20px;
 }
-.resposta, .pontos{
+.resposta, .pontos, .highscore{
     display: none;
     text-align: center;
     margin-top: 10px;

@@ -24,7 +24,6 @@ function CriaInputs(){
         input.setAttribute("id","input"+c);
         input.setAttribute("onfocus","Lista("+c+");");
         input.setAttribute("oninput","TestaLista();");
-        input.setAttribute("onkeydown","Enter();")
         input.disabled=true;
         button=document.createElement("button");
         button.setAttribute("id","button"+c);
@@ -142,12 +141,17 @@ function Reinicia(){
     Prepara();
     p=document.querySelector(".pontos");
     p.style="display: none;";
+    p=document.querySelector(".highscore");
+    p.style="display: none;";
     play=document.getElementById("play");
     play.setAttribute("onclick","Toca();");
     if(!modo){
         p=document.querySelector(".pontos");
         p.style="display: block;";
         p.innerHTML="Pontuação: "+pontos;
+        p=document.querySelector(".highscore");
+        p.style="display: block;";
+        p.innerHTML="Recorde: "+highscore;
         play=document.getElementById("play");
         play.removeAttribute("onclick");
         Toca();
@@ -176,6 +180,10 @@ function Testa(){
         }
         else{
             pontos++;
+            if(pontos>highscore){
+                highscore = pontos;
+                localStorage.setItem("highscore",highscore);
+            }
             Reinicia();
         }
     }
@@ -267,9 +275,11 @@ function TestaLista(){
     }
 }
 function Enter(){
-    tecla=event.key;
-    if(tecla=="Enter"){
-        Testa();
+    if(document.querySelector(".main").style.display == "block"){
+        tecla=event.key;
+        if(tecla=="Enter"){
+            Testa();
+        }
     }
 }
 function Modo(){
@@ -307,7 +317,7 @@ function Derrota(){
     datalist.style="display:none";
     input.style="background-color: red;color: white;";
     p2=document.querySelector(".resposta");
-    p2.innerHTML="Sinto muito! Você perdeu!";
+    p2.innerHTML="Sinto muito! Você perdeu! A música era "+ musica +".";
     p2.style="display:block;"
     p=document.querySelector(".play");
     p.style="display:block;"
@@ -500,4 +510,8 @@ var evermore=["willow","champagne problems","gold rush","'tis the damn season","
 var midnights=["Lavender Haze","Maroon","Anti-Hero","Snow On The Beach","You're On Your Own, Kid","Midnight Rain","Question...?","Bejeweled","Vigilante Shit","Labyrinth","Karma","Sweet Nothing","Mastermind","The Great War","Bigger Than The Whole Sky","Paris","High Infidelity","Glitch","Would've, Could've, Should've","Dear Reader","Hits Different"];
 var todas=[], tocadas=[], chance=0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos=0, multi, menu=true, modo=true;
 var debuttof=true, fearlesstof=true, speaknowtof=true, redtof=true, a1989tof=true, reputationtof=true, lovertof=true, folkloretof=true, evermoretof=true, midnightstof=true;
+var highscore = 0;
+if(localStorage.getItem("highscore") != null){
+    highscore = Number(localStorage.getItem("highscore"));
+}
 Prepara();
