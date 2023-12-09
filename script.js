@@ -1,3 +1,15 @@
+class Musica{
+    nome;
+    nomesimples;
+    album;
+    audio;
+    constructor(nome,album){
+        this.nome = nome;
+        this.album = album;
+        this.nomesimples = SimplificaNome(nome);
+        this.audio = new Audio("audio/"+this.nomesimples+".mp3");
+    }
+}
 function Prepara(){
     Albums();
     Sorteia();
@@ -41,59 +53,33 @@ function CriaInputs(){
 function SimplificaNome(nome){
     return nome.toLowerCase().replaceAll(".","").replaceAll(" ","").replaceAll("?","").replaceAll("'","").replaceAll("!","").replaceAll(",","").replaceAll("-","").replaceAll("(","").replaceAll(")","");
 }
-function TestaAlbum(album,chute,musica){
-    tof=false;
-    if(album.includes(musica)){
-        for(let i=0;i<album.length;i++){
-            if(SimplificaNome(album[i])==SimplificaNome(chute)){
-                tof=true;
-            }
+function EncontraAlbum(musica){
+    for(c=0;c<todas.length;c++){
+        if(SimplificaNome(musica) == todas[c].nomesimples){
+            return todas[c].album;
+            break;
         }
     }
-    return tof;
 }
 function Albums(){
-    if(debuttof){
-        todas=todas.concat(debut);
-    }
-    if(fearlesstof){
-        todas=todas.concat(fearless);
-    }
-    if(speaknowtof){
-        todas=todas.concat(speaknow);
-    }
-    if(redtof){
-        todas=todas.concat(red);
-    }
-    if(a1989tof){
-        todas=todas.concat(a1989);
-    }
-    if(reputationtof){
-        todas=todas.concat(reputation);
-    }
-    if(lovertof){
-        todas=todas.concat(lover);
-    }
-    if(folkloretof){
-        todas=todas.concat(folklore);
-    }
-    if(evermoretof){
-        todas=todas.concat(evermore);
-    }
-    if(midnightstof){
-        todas=todas.concat(midnights);
+    for(var c=0;c<musicas.length;c++){
+        if(debuttof && musicas[c].album == "Taylor Swift" || fearlesstof && musicas[c].album == "Fearless" || speaknowtof && musicas[c].album == "Speak Now" || redtof && musicas[c].album == "Red" || a1989tof && musicas[c].album == "1989" || reputationtof && musicas[c].album == "Reputation" || lovertof && musicas[c].album == "Lover" || folkloretof && musicas[c].album == "Folklore" || evermoretof && musicas[c].album == "Evermore" || midnightstof && musicas[c].album == "Midnights"){
+            todas.push(musicas[c]);
+        }
+        else{
+            console.log(musicas[c]);
+        }
     }
     todas.sort(function(a,b){
-        let x=a.toUpperCase().replaceAll("'","").replaceAll(".","");
-        let y=b.toUpperCase().replaceAll("'","").replaceAll(".","");
+        let x=a.nome.toUpperCase().replaceAll("'","").replaceAll(".","");
+        let y=b.nome.toUpperCase().replaceAll("'","").replaceAll(".","");
         return x==y?0:x>y?1:-1;
     });
 }
 function Sorteia(){
     n=Math.floor(Math.random()*todas.length);
     musica=todas[n];
-    audio="audio/"+SimplificaNome(musica)+".mp3";
-    audio= new Audio(audio);
+    audio=musica.audio;
     audio.preload="auto";
     if(!modo){
         n=Math.floor(Math.random()*120);
@@ -105,8 +91,8 @@ function Sorteia(){
     else if(tocadas.indexOf(musica)==-1){
         tocadas.push(musica);
         tocadas.sort(function(a,b){
-            let x=a.toUpperCase().replaceAll("'","").replaceAll(".","");
-            let y=b.toUpperCase().replaceAll("'","").replaceAll(".","");
+            let x=a.nome.toUpperCase().replaceAll("'","").replaceAll(".","");
+            let y=b.nome.toUpperCase().replaceAll("'","").replaceAll(".","");
             return x==y?0:x>y?1:-1;
         });
     }
@@ -163,7 +149,7 @@ function Reinicia(){
 }
 function Testa(){
     chute=input.value;
-    if(SimplificaNome(chute)==SimplificaNome(musica)){
+    if(SimplificaNome(chute)==musica.nomesimples){
         input.style="background-color: lawngreen; color: white;";
         div.setAttribute("class","disabled");
         datalist.style="display:none";
@@ -192,7 +178,7 @@ function Testa(){
             div.setAttribute("class","disabled");
             input.disabled=true;
             datalist.style="display:none";
-            if(TestaAlbum(debut,chute,musica) || TestaAlbum(fearless,chute,musica) || TestaAlbum(speaknow,chute,musica) ||  TestaAlbum(red,chute,musica) || TestaAlbum(a1989,chute,musica) || TestaAlbum(reputation,chute,musica) || TestaAlbum(lover,chute,musica) || TestaAlbum(folklore,chute,musica) || TestaAlbum(evermore,chute,musica) || TestaAlbum(midnights,chute,musica)){
+            if(EncontraAlbum(chute) == musica.album){
                 input.style="background-color: yellow; color: black;";
             }
             else{
@@ -203,7 +189,7 @@ function Testa(){
             }
             else{
                 p2=document.querySelector(".resposta");
-                p2.innerHTML="A música era "+musica+".";
+                p2.innerHTML="A música era "+musica.nome+".";
                 p2.style="display:block;"
                 p=document.querySelector(".play");
                 p.style="display:block;"
@@ -250,7 +236,7 @@ function CriaDatalist(n){
         option.setAttribute("class","option");
         option.setAttribute("id","option"+n+c);
         option.setAttribute("onclick","Option("+c+");");
-        option.innerHTML=todas[c];
+        option.innerHTML=todas[c].nome;
         datalist.appendChild(option)
     }
 }
@@ -498,16 +484,209 @@ function Midnights(){
         midnightstof=!midnightstof;
     }
 }
-var debut=["Teardrops On My Guitar","Tim McGraw","Picture To Burn","Cold As You","Marys's Song (Oh My,My)","Our Song","A Place In This World","Tied Together With A Smile","The Outside","Stay Beautiful","Should've Said No","I'm Only Me When I'm With You","Invisible","A Perfectly Good Heart"];
-var fearless=["Fearless","Fifteen","Forever And Always","The Way I Loved You","You Belong With Me","Hey Stephen","The Other Side Of The Door","Love Story","Change","The Best Day","White Horse","Breathe","You're Not Sorry","Tell Me Why","Jump Then Fall","Untouchable","Come In With The Rain","Today Was A Fairytale","Mr. Perfectly Fine","You All Over Me","That's When","Don't You","Bye Bye Baby","We Were Happy","Superstar"];
-var speaknow=["Mine","Sparks Fly","Speak Now","Better Than Revenge","Back To December","Dear John","The Story Of Us","Mean","Ours","If This Was A Movie","Superman","Never Grow Up","Enchanted","Last Kiss","Innocent","Haunted","Long Live","Electric Touch","When Emma Falls In Love","I Can See You","Foolish One","Timeless","Castles Crumbling"];
-var red=["State Of Grace","22","All Too Well","All Too Well (Ten Minutes Version)","We Are Never Ever Getting Back Together","I Knew You Were Trouble","Babe","Girl At Home","Come Back... Be Here","Everything Has Changed","Red","Treacherous","I Almost Do","Stay Stay Stay","The Last Time","Holy Ground","I Bet You Think About Me","The Very First Night","Sad Beautiful Tragic","The Lucky One","Starlight","Begin Again","The Moment I Knew","Ronan","Better Man","Nothing New","Message In A Bottle","Forever Winter","Run"];
-var a1989=["Welcome To New York","Blank Space","Style","Out Of The Woods","All You Had To Do Was Stay","Shake It Off","I Wish You Would","Bad Blood","Wildest Dreams","How You Get The Girl","This Love","I know Places","Clean","Wonderland","You Are In Love","New Romantics","Slut!","Say Don't Go","Now That We Don't Talk","Suburban Legends","Is It Over Now?"];
-var reputation=["...Ready For It?","Endgame","I Did Something Bad","Don't Blame Me","Delicate","Look What You Made Me Do","So It Goes...","Gorgeous","Dress","Dancing With Our Hands Tied","Getaway Car","This Is Why We Can't Have Nice Things","New Year's Day","Call It What You Want","King Of My Heart"];
-var lover=["I Forgot That You Existed","Cruel Summer","Lover","The Man","The Archer","Paper Rings","Miss Americana And The Heartbreak Prince","Death By A Thousand Cuts","You Need To Calm Down","ME!","Afterglow","Daylight","False God","London Boy","I Think He Knows","Cornelia Street","Soon You'll Get Better","It's Nice To Have A Friend","All Of The Girls You Loved Before"];
-var folklore=["the 1","cardigan","the last great american dynasty","exile","my tears ricochet","mirrorball","seven","august","this is me trying","illicit affairs","invisible string","mad woman","epiphany","betty","peace","hoax","the lakes"];
-var evermore=["willow","champagne problems","gold rush","'tis the damn season","tolerate it","no body, no crime","happiness","dorothea","coney island","ivy","cowboy like me","long story short","marjorie","closure","evermore","right where you left me","it's time to go"];
-var midnights=["Lavender Haze","Maroon","Anti-Hero","Snow On The Beach","You're On Your Own, Kid","Midnight Rain","Question...?","Bejeweled","Vigilante Shit","Labyrinth","Karma","Sweet Nothing","Mastermind","The Great War","Bigger Than The Whole Sky","Paris","High Infidelity","Glitch","Would've, Could've, Should've","Dear Reader","Hits Different"];
+var musicas = [
+    new Musica("Tim Mcgraw","Taylor Swift"),
+    new Musica("Picture To Burn","Taylor Swift"),
+    new Musica("Teardrops On My Guitar","Taylor Swift"),
+    new Musica("A Place In This World","Taylor Swift"),
+    new Musica("Cold As You","Taylor Swift"),
+    new Musica("The Outside","Taylor Swift"),
+    new Musica("Tied Together With A Smile","Taylor Swift"),
+    new Musica("Stay Beautiful","Taylor Swift"),
+    new Musica("Should've Said No","Taylor Swift"),
+    new Musica("Mary's Song","Taylor Swift"),
+    new Musica("Our Song","Taylor Swift"),
+    new Musica("I'm Only Me When I'm With You","Taylor Swift"),
+    new Musica("Invisible","Taylor Swift"),
+    new Musica("A Perfectly Good Heart","Taylor Swift"),
+    new Musica("Fearless","Fearless"),
+    new Musica("Fifteen","Fearless"),
+    new Musica("Love Story","Fearless"),
+    new Musica("Hey Stephen","Fearless"),
+    new Musica("White Horse","Fearless"),
+    new Musica("You Belong With Me","Fearless"),
+    new Musica("Breathe","Fearless"),
+    new Musica("Tell Me Why","Fearless"),
+    new Musica("You're Not Sorry","Fearless"),
+    new Musica("The Way I Loved You","Fearless"),
+    new Musica("Forever And Always","Fearless"),
+    new Musica("The Best Day","Fearless"),
+    new Musica("Change","Fearless"),
+    new Musica("Jump Then Fall","Fearless"),
+    new Musica("Untouchable","Fearless"),
+    new Musica("Come In With The Rain","Fearless"),
+    new Musica("Superstar","Fearless"),
+    new Musica("The Other Side Of The Door","Fearless"),
+    new Musica("Today Was A Fairytale","Fearless"),
+    new Musica("You All Over Me","Fearless"),
+    new Musica("Mr. Perfectly Fine","Fearless"),
+    new Musica("We Were Happy","Fearless"),
+    new Musica("That's When","Fearless"),
+    new Musica("Don't You","Fearless"),
+    new Musica("Bye Bye Baby","Fearless"),
+    new Musica("Mine","Speak Now"),
+    new Musica("Sparks Fly","Speak Now"),
+    new Musica("Back To December","Speak Now"),
+    new Musica("Speak Now","Speak Now"),
+    new Musica("Dear John","Speak Now"),
+    new Musica("Mean","Speak Now"),
+    new Musica("The Story Of Us","Speak Now"),
+    new Musica("Never Grow Up","Speak Now"),
+    new Musica("Enchanted","Speak Now"),
+    new Musica("Better Than Revenge","Speak Now"),
+    new Musica("Innocent","Speak Now"),
+    new Musica("Haunted","Speak Now"),
+    new Musica("Last Kiss","Speak Now"),
+    new Musica("Long Live","Speak Now"),
+    new Musica("Ours","Speak Now"),
+    new Musica("Superman","Speak Now"),
+    new Musica("Electric Touch","Speak Now"),
+    new Musica("When Emma Falls In Love","Speak Now"),
+    new Musica("I Can See You","Speak Now"),
+    new Musica("Castles Crumbling","Speak Now"),
+    new Musica("Foolish One","Speak Now"),
+    new Musica("Timeless","Speak Now"),
+    new Musica("If This Was A Movie","Speak Now"),
+    new Musica("State Of Grace","Red"),
+    new Musica("Red","Red"),
+    new Musica("Treacherous","Red"),
+    new Musica("I Knew You Were Trouble","Red"),
+    new Musica("All Too Well","Red"),
+    new Musica("22","Red"),
+    new Musica("I Almost Do","Red"),
+    new Musica("We Are Never Ever Getting Back Together","Red"),
+    new Musica("Stay Stay Stay","Red"),
+    new Musica("The Last Time","Red"),
+    new Musica("Holy Ground","Red"),
+    new Musica("Sad Beautiful Tragic","Red"),
+    new Musica("The Lucky One","Red"),
+    new Musica("Everything Has Changed","Red"),
+    new Musica("Starlight","Red"),
+    new Musica("Begin Again","Red"),
+    new Musica("The Moment I Knew","Red"),
+    new Musica("Come Back... Be Here","Red"),
+    new Musica("Girl At Home","Red"),
+    new Musica("Ronan","Red"),
+    new Musica("Better Man","Red"),
+    new Musica("Nothing New","Red"),
+    new Musica("Babe","Red"),
+    new Musica("Message In A Bottle","Red"),
+    new Musica("I Bet You Think About Me","Red"),
+    new Musica("Forever Winter","Red"),
+    new Musica("Run","Red"),
+    new Musica("The Very First Night","Red"),
+    new Musica("All Too Well (Ten Minutes Version)","Red"),
+    new Musica("Welcome To New York","1989"),
+    new Musica("Blank Space","1989"),
+    new Musica("Style","1989"),
+    new Musica("Out Of The Woods","1989"),
+    new Musica("All You Had To Do Was Stay","1989"),
+    new Musica("Shake It Off","1989"),
+    new Musica("I Wish You Would","1989"),
+    new Musica("Bad Blood","1989"),
+    new Musica("Wildest Dreams","1989"),
+    new Musica("How You Get The Girl","1989"),
+    new Musica("This Love","1989"),
+    new Musica("I Know Places","1989"),
+    new Musica("Clean","1989"),
+    new Musica("Wonderland","1989"),
+    new Musica("You Are In Love","1989"),
+    new Musica("New Romantics","1989"),
+    new Musica("Slut!","1989"),
+    new Musica("Say Don't Go","1989"),
+    new Musica("Now That We Don't Talk","1989"),
+    new Musica("Suburban Legends","1989"),
+    new Musica("Is It Over Now?","1989"),
+    new Musica("...Ready For It?","Reputation"),
+    new Musica("Endgame","Reputation"),
+    new Musica("I Did Something Bad","Reputation"),
+    new Musica("Don't Blame Me","Reputation"),
+    new Musica("Delicate","Reputation"),
+    new Musica("Look What You Made Me Do","Reputation"),
+    new Musica("So It Goes...","Reputation"),
+    new Musica("Gorgeous","Reputation"),
+    new Musica("Getaway Car","Reputation"),
+    new Musica("King Of My Heart","Reputation"),
+    new Musica("Dancing With Our Hands Tied","Reputation"),
+    new Musica("Dress","Reputation"),
+    new Musica("This Is Why We Can't Have Nice Things","Reputation"),
+    new Musica("Call It What You Want","Reputation"),
+    new Musica("New Year's Day","Reputation"),
+    new Musica("I Forgot That You Existed","Lover"),
+    new Musica("Cruel Summer","Lover"),
+    new Musica("Lover","Lover"),
+    new Musica("The Man","Lover"),
+    new Musica("The Archer","Lover"),
+    new Musica("I Think He Knows","Lover"),
+    new Musica("Miss Americana And The Heartbreak Prince","Lover"),
+    new Musica("Paper Rings","Lover"),
+    new Musica("Cornelia Street","Lover"),
+    new Musica("Death By A Thousand Cuts","Lover"),
+    new Musica("London Boy","Lover"),
+    new Musica("Soon You'll Get Better","Lover"),
+    new Musica("False God","Lover"),
+    new Musica("You Need To Calm Down","Lover"),
+    new Musica("Afterglow","Lover"),
+    new Musica("ME!","Lover"),
+    new Musica("It's Nice To Have A Friend","Lover"),
+    new Musica("Daylight","Lover"),
+    new Musica("All Of The Girls You Loved Before","Lover"),
+    new Musica("the 1","Folklore"),
+    new Musica("cardigan","Folklore"),
+    new Musica("the last great american dynasty","Folklore"),
+    new Musica("exile","Folklore"),
+    new Musica("my tears ricochet","Folklore"),
+    new Musica("mirrorball","Folklore"),
+    new Musica("seven","Folklore"),
+    new Musica("august","Folklore"),
+    new Musica("this is me trying","Folklore"),
+    new Musica("illicit affairs","Folklore"),
+    new Musica("invisible string","Folklore"),
+    new Musica("mad woman","Folklore"),
+    new Musica("epiphany","Folklore"),
+    new Musica("betty","Folklore"),
+    new Musica("peace","Folklore"),
+    new Musica("hoax","Folklore"),
+    new Musica("the lakes","Folklore"),
+    new Musica("willow","Evermore"),
+    new Musica("champagne problems","Evermore"),
+    new Musica("gold rush","Evermore"),
+    new Musica("'tis the damn season","Evermore"),
+    new Musica("tolerate it","Evermore"),
+    new Musica("no body, no crime","Evermore"),
+    new Musica("happiness","Evermore"),
+    new Musica("dorothea","Evermore"),
+    new Musica("coney island","Evermore"),
+    new Musica("ivy","Evermore"),
+    new Musica("cowboy like me","Evermore"),
+    new Musica("long story short","Evermore"),
+    new Musica("marjorie","Evermore"),
+    new Musica("closure","Evermore"),
+    new Musica("evermore","Evermore"),
+    new Musica("right where you left me","Evermore"),
+    new Musica("it's time to go","Evermore"),
+    new Musica("Lavender Haze","Midnights"),
+    new Musica("Maroon","Midnights"),
+    new Musica("Anti-Hero","Midnights"),
+    new Musica("Snow On The Beach","Midnights"),
+    new Musica("You're On Your Own, Kid","Midnights"),
+    new Musica("Midnight Rain","Midnights"),
+    new Musica("Question...?","Midnights"),
+    new Musica("Vigilante Shit","Midnights"),
+    new Musica("Bejeweled","Midnights"),
+    new Musica("Labyrinth","Midnights"),
+    new Musica("Karma","Midnights"),
+    new Musica("Sweet Nothing","Midnights"),
+    new Musica("Mastermind","Midnights"),
+    new Musica("The Great War","Midnights"),
+    new Musica("Bigger Than The Whole Sky","Midnights"),
+    new Musica("Paris","Midnights"),
+    new Musica("High Infidelity","Midnights"),
+    new Musica("Glitch","Midnights"),
+    new Musica("Would've, Could've, Should've","Midnights"),
+    new Musica("Dear Reader","Midnights"),
+    new Musica("Hits Different","Midnights"),
+]
 var todas=[], tocadas=[], chance=0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos=0, multi, menu=true, modo=true;
 var debuttof=true, fearlesstof=true, speaknowtof=true, redtof=true, a1989tof=true, reputationtof=true, lovertof=true, folkloretof=true, evermoretof=true, midnightstof=true;
 var highscore = 0;
@@ -515,3 +694,4 @@ if(localStorage.getItem("highscore") != null){
     highscore = Number(localStorage.getItem("highscore"));
 }
 Prepara();
+
