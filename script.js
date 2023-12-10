@@ -308,7 +308,9 @@ function Derrota(){
     p=document.querySelector(".play");
     p.style="display:block;"
     pontos=0;
-    inputs.parentNode.removeChild(inputs);
+    if(inputs!=undefined){
+        inputs.parentNode.removeChild(inputs);
+    }
 }
 function Conta(){
     contador++
