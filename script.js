@@ -303,7 +303,7 @@ function Derrota(){
     datalist.style="display:none";
     input.style="background-color: red;color: white;";
     p2=document.querySelector(".resposta");
-    p2.innerHTML="Sinto muito! Você perdeu! A música era "+ musica +".";
+    p2.innerHTML="Sinto muito! Você perdeu! A música era "+ musica.nome +".";
     p2.style="display:block;"
     p=document.querySelector(".play");
     p.style="display:block;"
