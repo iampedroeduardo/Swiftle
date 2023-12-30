@@ -262,6 +262,15 @@ function Lista(n){
     data=document.getElementById("datalist"+n);
     data.style="display:block;"+"left:"+((window.screen.width/2)-150)+"px;";
 }
+function TestaOpcoes(opcao){
+    let tof=false;
+    for(let i=0;i<todas.length;i++){
+        if(SimplificaNome(opcao)==SimplificaNome(todas[i])){
+            tof=true
+        }
+    }
+    return tof;
+}
 function TestaLista(){
     Lista(chance-1);
     for(var c=0;c<todas.length;c++){
@@ -274,11 +283,25 @@ function TestaLista(){
         }
     }
 }
+function Completa(){
+    for(var c=0;c<todas.length;c++){
+        option=document.getElementById("option"+(chance-1)+c);
+        if(option.style.display=="block"){
+            input.value=option.innerHTML;
+            break;
+        }
+    }
+}
 function Enter(){
     if(document.querySelector(".main").style.display == "block"){
         tecla=event.key;
         if(tecla=="Enter"){
-            Testa();
+            if(TestaOpcoes(input.value)){
+                Testa();
+            }
+            else{
+                Completa();
+            }
         }
     }
 }
