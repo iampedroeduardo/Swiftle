@@ -333,7 +333,7 @@ function Toca(){
     clearInterval(intervalo);
     audio.play();
     teste=setInterval(()=>{
-        if(audio.readyState>0){
+        if(audio.readyState>1){
             intervalo=setInterval(Conta,50);
             clearInterval(teste);
         }
