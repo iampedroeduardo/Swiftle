@@ -83,6 +83,9 @@ function Albums(){
     if(midnightstof){
         todas=todas.concat(midnights);
     }
+    if(ttpdtof){
+        todas=todas.concat(ttpd);
+    }
     todas.sort(function(a,b){
         let x=a.toUpperCase().replaceAll("'","").replaceAll(".","");
         let y=b.toUpperCase().replaceAll("'","").replaceAll(".","");
@@ -192,7 +195,7 @@ function Testa(){
             div.setAttribute("class","disabled");
             input.disabled=true;
             datalist.style="display:none";
-            if(TestaAlbum(debut,chute,musica) || TestaAlbum(fearless,chute,musica) || TestaAlbum(speaknow,chute,musica) ||  TestaAlbum(red,chute,musica) || TestaAlbum(a1989,chute,musica) || TestaAlbum(reputation,chute,musica) || TestaAlbum(lover,chute,musica) || TestaAlbum(folklore,chute,musica) || TestaAlbum(evermore,chute,musica) || TestaAlbum(midnights,chute,musica)){
+            if(TestaAlbum(debut,chute,musica) || TestaAlbum(fearless,chute,musica) || TestaAlbum(speaknow,chute,musica) ||  TestaAlbum(red,chute,musica) || TestaAlbum(a1989,chute,musica) || TestaAlbum(reputation,chute,musica) || TestaAlbum(lover,chute,musica) || TestaAlbum(folklore,chute,musica) || TestaAlbum(evermore,chute,musica) || TestaAlbum(midnights,chute,musica || TestaAlbum(ttpd,chute,musica))){
                 input.style="background-color: yellow; color: black;";
             }
             else{
@@ -371,7 +374,7 @@ function Conta(){
 function Debut(){
     quaddebut=document.querySelector("#quaddebut");
     debutcheck=document.querySelectorAll(".debut");
-    if(debuttof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof)){
+    if(debuttof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof || ttpdtof)){
         quaddebut.setAttribute("fill","rgb(228, 225, 225)");
         debutcheck[0].style="display: none;";
         debutcheck[1].style="display: none;";
@@ -387,7 +390,7 @@ function Debut(){
 function Fearless(){
     quadfearless=document.querySelector("#quadfearless");
     fearlesscheck=document.querySelectorAll(".fearless");
-    if(fearlesstof && (debuttof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof)){
+    if(fearlesstof && (debuttof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof || ttpdtof)){
         quadfearless.setAttribute("fill","rgb(228, 225, 225)");
         fearlesscheck[0].style="display: none;";
         fearlesscheck[1].style="display: none;";
@@ -403,7 +406,7 @@ function Fearless(){
 function SpeakNow(){
     quadspeaknow=document.querySelector("#quadspeaknow");
     speaknowcheck=document.querySelectorAll(".speaknow");
-    if(speaknowtof && (fearlesstof || debuttof || redtof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof)){
+    if(speaknowtof && (fearlesstof || debuttof || redtof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof || ttpdtof)){
         quadspeaknow.setAttribute("fill","rgb(228, 225, 225)");
         speaknowcheck[0].style="display: none;";
         speaknowcheck[1].style="display: none;";
@@ -419,7 +422,7 @@ function SpeakNow(){
 function Red(){
     quadred=document.querySelector("#quadred");
     redcheck=document.querySelectorAll(".red");
-    if(redtof && (fearlesstof || speaknowtof || debuttof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof)){
+    if(redtof && (fearlesstof || speaknowtof || debuttof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof || ttpdtof)){
         quadred.setAttribute("fill","rgb(228, 225, 225)");
         redcheck[0].style="display: none;";
         redcheck[1].style="display: none;";
@@ -435,7 +438,7 @@ function Red(){
 function A1989(){
     quada1989=document.querySelector("#quada1989");
     a1989check=document.querySelectorAll(".a1989");
-    if(a1989tof && (fearlesstof || speaknowtof || redtof || debuttof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof)){
+    if(a1989tof && (fearlesstof || speaknowtof || redtof || debuttof || reputationtof || lovertof || folkloretof || evermoretof || midnightstof || ttpdtof)){
         quada1989.setAttribute("fill","rgb(228, 225, 225)");
         a1989check[0].style="display: none;";
         a1989check[1].style="display: none;";
@@ -451,7 +454,7 @@ function A1989(){
 function Reputation(){
     quadreputation=document.querySelector("#quadreputation");
     reputationcheck=document.querySelectorAll(".reputation");
-    if(reputationtof && (fearlesstof || speaknowtof || redtof || a1989tof || debuttof || lovertof || folkloretof || evermoretof || midnightstof)){
+    if(reputationtof && (fearlesstof || speaknowtof || redtof || a1989tof || debuttof || lovertof || folkloretof || evermoretof || midnightstof || ttpdtof)){
         quadreputation.setAttribute("fill","rgb(228, 225, 225)");
         reputationcheck[0].style="display: none;";
         reputationcheck[1].style="display: none;";
@@ -467,7 +470,7 @@ function Reputation(){
 function Lover(){
     quadlover=document.querySelector("#quadlover");
     lovercheck=document.querySelectorAll(".lover");
-    if(lovertof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || debuttof || folkloretof || evermoretof || midnightstof)){
+    if(lovertof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || debuttof || folkloretof || evermoretof || midnightstof || ttpdtof)){
         quadlover.setAttribute("fill","rgb(228, 225, 225)");
         lovercheck[0].style="display: none;";
         lovercheck[1].style="display: none;";
@@ -483,7 +486,7 @@ function Lover(){
 function Folklore(){
     quadfolklore=document.querySelector("#quadfolklore");
     folklorecheck=document.querySelectorAll(".folklore");
-    if(folkloretof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || debuttof || evermoretof || midnightstof)){
+    if(folkloretof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || debuttof || evermoretof || midnightstof || ttpdtof)){
         quadfolklore.setAttribute("fill","rgb(228, 225, 225)");
         folklorecheck[0].style="display: none;";
         folklorecheck[1].style="display: none;";
@@ -499,7 +502,7 @@ function Folklore(){
 function Evermore(){
     quadevermore=document.querySelector("#quadevermore");
     evermorecheck=document.querySelectorAll(".evermore");
-    if(evermoretof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || folkloretof || debuttof || midnightstof)){
+    if(evermoretof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || folkloretof || debuttof || midnightstof || ttpdtof)){
         quadevermore.setAttribute("fill","rgb(228, 225, 225)");
         evermorecheck[0].style="display: none;";
         evermorecheck[1].style="display: none;";
@@ -515,7 +518,7 @@ function Evermore(){
 function Midnights(){
     quadmidnights=document.querySelector("#quadmidnights");
     midnightscheck=document.querySelectorAll(".midnights");
-    if(midnightstof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || debuttof)){
+    if(midnightstof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || debuttof || ttpdtof)){
         quadmidnights.setAttribute("fill","rgb(228, 225, 225)");
         midnightscheck[0].style="display: none;";
         midnightscheck[1].style="display: none;";
@@ -528,6 +531,22 @@ function Midnights(){
         midnightstof=!midnightstof;
     }
 }
+function TTPD(){
+    quadttpd=document.querySelector("#quadttpd");
+    ttpdcheck=document.querySelectorAll(".ttpd");
+    if(ttpdtof && (fearlesstof || speaknowtof || redtof || a1989tof || reputationtof || lovertof || folkloretof || evermoretof || debuttof || midnightstof)){
+        quadttpd.setAttribute("fill","rgb(228, 225, 225)");
+        ttpdcheck[0].style="display: none;";
+        ttpdcheck[1].style="display: none;";
+        ttpdtof=!ttpdtof;
+    }
+    else if(!ttpdtof){
+        quadttpd.setAttribute("fill","rgb(203, 203, 180)");
+        ttpdcheck[0].style="display: block;";
+        ttpdcheck[1].style="display: block;";
+        ttpdtof=!ttpdtof;
+    }
+}
 var debut=["Teardrops On My Guitar","Tim McGraw","Picture To Burn","Cold As You","Mary's Song (Oh My,My)","Our Song","A Place In This World","Tied Together With A Smile","The Outside","Stay Beautiful","Should've Said No","I'm Only Me When I'm With You","Invisible","A Perfectly Good Heart"];
 var fearless=["Fearless","Fifteen","Forever And Always","The Way I Loved You","You Belong With Me","Hey Stephen","The Other Side Of The Door","Love Story","Change","The Best Day","White Horse","Breathe","You're Not Sorry","Tell Me Why","Jump Then Fall","Untouchable","Come In With The Rain","Today Was A Fairytale","Mr. Perfectly Fine","You All Over Me","That's When","Don't You","Bye Bye Baby","We Were Happy","Superstar"];
 var speaknow=["Mine","Sparks Fly","Speak Now","Better Than Revenge","Back To December","Dear John","The Story Of Us","Mean","Ours","If This Was A Movie","Superman","Never Grow Up","Enchanted","Last Kiss","Innocent","Haunted","Long Live","Electric Touch","When Emma Falls In Love","I Can See You","Foolish One","Timeless","Castles Crumbling"];
@@ -538,8 +557,9 @@ var lover=["I Forgot That You Existed","Cruel Summer","Lover","The Man","The Arc
 var folklore=["the 1","cardigan","the last great american dynasty","exile","my tears ricochet","mirrorball","seven","august","this is me trying","illicit affairs","invisible string","mad woman","epiphany","betty","peace","hoax","the lakes"];
 var evermore=["willow","champagne problems","gold rush","'tis the damn season","tolerate it","no body, no crime","happiness","dorothea","coney island","ivy","cowboy like me","long story short","marjorie","closure","evermore","right where you left me","it's time to go"];
 var midnights=["Lavender Haze","Maroon","Anti-Hero","Snow On The Beach","You're On Your Own, Kid","Midnight Rain","Question...?","Bejeweled","Vigilante Shit","Labyrinth","Karma","Sweet Nothing","Mastermind","The Great War","Bigger Than The Whole Sky","Paris","High Infidelity","Glitch","Would've, Could've, Should've","Dear Reader","Hits Different"];
+var ttpd=["Fortnight","The Tortured Poets Department","My Boy Only Breaks His Favorite Toys","Down Bad","So Long, London","But Daddy I Love Him", "Fresh Out The Slammer","Florida!!!","Guilty as Sin?","Who's Afraid Of Little Old Me?","I Can Fix Him (No Really I Can)","loml","I Can Do It With a Broken Heart","The Smallest Man Who Ever Lived","The Alchemy","Clara Bow","The Black Dog","imgonnagetyouback","The Albatross","Chloe or Sam or Sophia or Marcus","How Did It End","So High School","I Hate It Here","thanK you aIMee","I Look in People's Windows","The Prophecy","Cassandra","Peter","The Bolter","Robin","The Manuscript"];
 var todas=[], tocadas=[], chance=0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos=0, multi, menu=true, modo=true;
-var debuttof=true, fearlesstof=true, speaknowtof=true, redtof=true, a1989tof=true, reputationtof=true, lovertof=true, folkloretof=true, evermoretof=true, midnightstof=true;
+var debuttof=true, fearlesstof=true, speaknowtof=true, redtof=true, a1989tof=true, reputationtof=true, lovertof=true, folkloretof=true, evermoretof=true, midnightstof=true, ttpdtof=true;
 var highscore = 0;
 if(localStorage.getItem("highscore") != null){
     highscore = Number(localStorage.getItem("highscore"));
