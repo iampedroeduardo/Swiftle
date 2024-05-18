@@ -379,7 +379,7 @@ function Stats(){
 function criaStats(){
     stats = `
     <div class="albumstats">
-    <p style="color:lawngreen;">Taylor Swift(${parseInt(debutac/debuttoc*100)}%)</p>
+    <p style="color:lawngreen;">Taylor Swift(${parseInt(debutac/debuttoc*100)}%)</p> 
     <svg width="300" height="34" class="stats">
         <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="lawngreen" stroke="2"></rect>
         <rect x="1" y="1" width="${debutac/debuttoc*250}" height="30" fill="lawngreen" stroke="lawngreen" stroke="2"></rect>
