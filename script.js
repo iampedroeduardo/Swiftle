@@ -105,6 +105,7 @@ function albums(){
 function sorteia(){
     n = Math.floor(Math.random() * todas.length);
     musica = todas[n];
+    tocada = false;
     audio = "audio/" + simplificaNome(musica) + ".mp3";
     audio = new Audio(audio);
     audio.preload = "auto";
@@ -176,63 +177,6 @@ function reinicia(){
 }
 function testa(){
     chute = input.value;
-    if(chance == 1){
-        if(debut.includes(musica)){
-            debuttoc++;
-            albumatual = "Debut";
-            localStorage.setItem("debuttoc", debuttoc);
-        }
-        if(fearless.includes(musica)){
-            fearlesstoc++;
-            albumatual = "Fearless";
-            localStorage.setItem("fearlesstoc", fearlesstoc);
-        }
-        if(speaknow.includes(musica)){
-            speaknowtoc++;
-            albumatual = "Speak Now";
-            localStorage.setItem("speaknowtoc", speaknowtoc);
-        }
-        if(a1989.includes(musica)){
-            a1989toc++;
-            albumatual = "1989";
-            localStorage.setItem("a1989toc", a1989toc);
-        }
-        if(red.includes(musica)){
-            redtoc++;
-            albumatual = "Red";
-            localStorage.setItem("redtoc", redtoc);
-        }
-        if(reputation.includes(musica)){
-            reputationtoc++;
-            albumatual = "Reputation";
-            localStorage.setItem("reputationtoc", reputationtoc);
-        }
-        if(lover.includes(musica)){
-            lovertoc++;
-            albumatual = "Lover";
-            localStorage.setItem("lovertoc", lovertoc);
-        }
-        if(folklore.includes(musica)){
-            folkloretoc++;
-            albumatual = "Folklore";
-            localStorage.setItem("folkloretoc", folkloretoc);
-        }
-        if(evermore.includes(musica)){
-            evermoretoc++;
-            albumatual = "Evermore";
-            localStorage.setItem("evermoretoc", evermoretoc);
-        }
-        if(midnights.includes(musica)){
-            midnightstoc++;
-            albumatual = "Midnights";
-            localStorage.setItem("midnightstoc", midnightstoc);
-        }
-        if(ttpd.includes(musica)){
-            ttpdtoc++;
-            albumatual = "TTPD";
-            localStorage.setItem("ttpdtoc", ttpdtoc);
-        }
-    }
     if(simplificaNome(chute) == simplificaNome(musica)){
         input.style = "background-color: lawngreen; color: white;";
         div.setAttribute("class", "disabled");
@@ -551,6 +495,63 @@ function Modo(){
     modo = !modo;
 }
 function toca(){
+    if(!tocada){
+        if(debut.includes(musica)){
+            debuttoc++;
+            albumatual = "Debut";
+            localStorage.setItem("debuttoc", debuttoc);
+        }
+        if(fearless.includes(musica)){
+            fearlesstoc++;
+            albumatual = "Fearless";
+            localStorage.setItem("fearlesstoc", fearlesstoc);
+        }
+        if(speaknow.includes(musica)){
+            speaknowtoc++;
+            albumatual = "Speak Now";
+            localStorage.setItem("speaknowtoc", speaknowtoc);
+        }
+        if(a1989.includes(musica)){
+            a1989toc++;
+            albumatual = "1989";
+            localStorage.setItem("a1989toc", a1989toc);
+        }
+        if(red.includes(musica)){
+            redtoc++;
+            albumatual = "Red";
+            localStorage.setItem("redtoc", redtoc);
+        }
+        if(reputation.includes(musica)){
+            reputationtoc++;
+            albumatual = "Reputation";
+            localStorage.setItem("reputationtoc", reputationtoc);
+        }
+        if(lover.includes(musica)){
+            lovertoc++;
+            albumatual = "Lover";
+            localStorage.setItem("lovertoc", lovertoc);
+        }
+        if(folklore.includes(musica)){
+            folkloretoc++;
+            albumatual = "Folklore";
+            localStorage.setItem("folkloretoc", folkloretoc);
+        }
+        if(evermore.includes(musica)){
+            evermoretoc++;
+            albumatual = "Evermore";
+            localStorage.setItem("evermoretoc", evermoretoc);
+        }
+        if(midnights.includes(musica)){
+            midnightstoc++;
+            albumatual = "Midnights";
+            localStorage.setItem("midnightstoc", midnightstoc);
+        }
+        if(ttpd.includes(musica)){
+            ttpdtoc++;
+            albumatual = "TTPD";
+            localStorage.setItem("ttpdtoc", ttpdtoc);
+        }
+    }
     multi = chance;
     if(!modo){
         multi = 6;
@@ -785,7 +786,7 @@ var evermore = ["willow","champagne problems","gold rush","'tis the damn season"
 var midnights = ["Lavender Haze","Maroon","Anti-Hero","Snow On The Beach","You're On Your Own, Kid","Midnight Rain","Question...?","Bejeweled","Vigilante Shit","Labyrinth","Karma","Sweet Nothing","Mastermind","The Great War","Bigger Than The Whole Sky","Paris","High Infidelity","Glitch","Would've, Could've, Should've","Dear Reader","Hits Different"];
 var ttpd = ["Fortnight","The Tortured Poets Department","My Boy Only Breaks His Favorite Toys","Down Bad","So Long, London","But Daddy I Love Him", "Fresh Out The Slammer","Florida!!!","Guilty as Sin?","Who's Afraid Of Little Old Me?","I Can Fix Him (No Really I Can)","loml","I Can Do It With a Broken Heart","The Smallest Man Who Ever Lived","The Alchemy","Clara Bow","The Black Dog","imgonnagetyouback","The Albatross","Chloe or Sam or Sophia or Marcus","How Did It End","So High School","I Hate It Here","thanK you aIMee","I Look in People's Windows","The Prophecy","Cassandra","Peter","The Bolter","Robin","The Manuscript"];
 var jao = ["Vou Morrer Sozinho","Me Beija Com Raiva","Lindo Demais","Imaturo","Ainda Te Amo","A Rua","Lobos","Eu Quero Ser Como Você","Aqui","Monstros","Fim do Mundo","Ressaca","A Última Noite","Triste Pra Sempre","Enquanto Me Beija","Essa Eu Fiz Pro Nosso Amor","Fim De Festa","Barcelona","Você Vai Me Destruir","VSF","Hotel San Diego",":((Nota De Voz 8)","Clarão","Não Te Amo","Idiota","Santo","Acontece","Você Me Perdeu","Meninos e Meninas","Coringa","Doce","Tempos de Glória","Olhos Vermelhos","Escorpião","Me Lambe","Gameboy","Alinhamento Milenar","Lábia","Maria","Julho","Eu Posso Ser Como Você","Sinais","Se O Problema Era Você, Por Que Doeu Em Mim?","Locadora","Rádio","São Paulo, 2015","Super"];
-var todas = [], tocadas = [], chance = 0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos = 0, multi, albumatual, stats = false, menu = true, modo = true;
+var todas = [], tocadas = [], chance = 0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos = 0, multi, albumatual, stats = false, menu = true, modo = true, tocada = false;
 var debuttof = true, fearlesstof = true, speaknowtof = true, redtof = true, a1989tof = true, reputationtof = true, lovertof = true, folkloretof = true, evermoretof = true, midnightstof = true, ttpdtof = true, jaotof = false;
 var debutac = 0, fearlessac = 0, speaknowac = 0, redac = 0, a1989ac = 0, reputationac = 0, loverac = 0, folkloreac = 0, evermoreac = 0, midnightsac = 0, ttpdac = 0;
 var debuttoc = 0, fearlesstoc = 0, speaknowtoc = 0, redtoc = 0, a1989toc = 0, reputationtoc = 0, lovertoc = 0, folkloretoc = 0, evermoretoc = 0, midnightstoc = 0, ttpdtoc = 0;
