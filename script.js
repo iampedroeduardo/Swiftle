@@ -44,7 +44,7 @@ function criaInputs(){
     document.querySelector(".main").appendChild(inputs);
 }
 function simplificaNome(nome){
-    return nome.toLowerCase().replaceAll(".", "").replaceAll(" ", "").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "");
+    return nome.toLowerCase().replaceAll(".", "").replaceAll(" ", "").replaceAll("?", "").replaceAll("'", "").replaceAll("!", "").replaceAll(",", "").replaceAll("-", "").replaceAll("(", "").replaceAll(")", "").replaceAll("ê","e").replaceAll("ú","u").replaceAll(":","").replaceAll("ã","a").replaceAll("ó","o").replaceAll("á","a");
 }
 function testaAlbum(album, chute, musica){
     tof = false;
@@ -58,38 +58,43 @@ function testaAlbum(album, chute, musica){
     return tof;
 }
 function albums(){
-    if(debuttof){
-        todas = todas.concat(debut);
+    if(jaotof){
+        todas = todas.concat(jao);
     }
-    if(fearlesstof){
-        todas = todas.concat(fearless);
-    }
-    if(speaknowtof){
-        todas = todas.concat(speaknow);
-    }
-    if(redtof){
-        todas = todas.concat(red);
-    }
-    if(a1989tof){
-        todas = todas.concat(a1989);
-    }
-    if(reputationtof){
-        todas = todas.concat(reputation);
-    }
-    if(lovertof){
-        todas = todas.concat(lover);
-    }
-    if(folkloretof){
-        todas = todas.concat(folklore);
-    }
-    if(evermoretof){
-        todas = todas.concat(evermore);
-    }
-    if(midnightstof){
-        todas = todas.concat(midnights);
-    }
-    if(ttpdtof){
-        todas = todas.concat(ttpd);
+    else{
+        if(debuttof){
+            todas = todas.concat(debut);
+        }
+        if(fearlesstof){
+            todas = todas.concat(fearless);
+        }
+        if(speaknowtof){
+            todas = todas.concat(speaknow);
+        }
+        if(redtof){
+            todas = todas.concat(red);
+        }
+        if(a1989tof){
+            todas = todas.concat(a1989);
+        }
+        if(reputationtof){
+            todas = todas.concat(reputation);
+        }
+        if(lovertof){
+            todas = todas.concat(lover);
+        }
+        if(folkloretof){
+            todas = todas.concat(folklore);
+        }
+        if(evermoretof){
+            todas = todas.concat(evermore);
+        }
+        if(midnightstof){
+            todas = todas.concat(midnights);
+        }
+        if(ttpdtof){
+            todas = todas.concat(ttpd);
+        }
     }
     todas.sort(function(a, b){
         let x = a.toUpperCase().replaceAll("'", "").replaceAll(".", "");
@@ -239,6 +244,7 @@ function Menu(){
         menu = !menu;
         audio.pause();
         audio.currentTime = 0;
+        document.addEventListener("keyup",testaJao);
     }
     else{
         nav.style = "display: none;";
@@ -247,6 +253,7 @@ function Menu(){
         xis.style = "display: none;";
         menu = !menu;
         reinicia();
+        document.removeEventListener("keyup");
     }
 }
 function criaDatalist(n){
@@ -311,6 +318,11 @@ function enter(){
                 completa();
             }
         }
+    }
+}
+function testaJao(){
+    if(event.key == "j"){
+        jaotof = !jaotof;
     }
 }
 function Modo(){
@@ -563,8 +575,9 @@ var folklore = ["the 1","cardigan","the last great american dynasty","exile","my
 var evermore = ["willow","champagne problems","gold rush","'tis the damn season","tolerate it","no body, no crime","happiness","dorothea","coney island","ivy","cowboy like me","long story short","marjorie","closure","evermore","right where you left me","it's time to go"];
 var midnights = ["Lavender Haze","Maroon","Anti-Hero","Snow On The Beach","You're On Your Own, Kid","Midnight Rain","Question...?","Bejeweled","Vigilante Shit","Labyrinth","Karma","Sweet Nothing","Mastermind","The Great War","Bigger Than The Whole Sky","Paris","High Infidelity","Glitch","Would've, Could've, Should've","Dear Reader","Hits Different"];
 var ttpd = ["Fortnight","The Tortured Poets Department","My Boy Only Breaks His Favorite Toys","Down Bad","So Long, London","But Daddy I Love Him", "Fresh Out The Slammer","Florida!!!","Guilty as Sin?","Who's Afraid Of Little Old Me?","I Can Fix Him (No Really I Can)","loml","I Can Do It With a Broken Heart","The Smallest Man Who Ever Lived","The Alchemy","Clara Bow","The Black Dog","imgonnagetyouback","The Albatross","Chloe or Sam or Sophia or Marcus","How Did It End","So High School","I Hate It Here","thanK you aIMee","I Look in People's Windows","The Prophecy","Cassandra","Peter","The Bolter","Robin","The Manuscript"];
+var jao = ["Vou Morrer Sozinho","Me Beija Com Raiva","Lindo Demais","Imaturo","Ainda Te Amo","A Rua","Lobos","Eu Quero Ser Como Você","Aqui","Monstros","Fim do Mundo","Ressaca","A Última Noite","Triste Pra Sempre","Enquanto Me Beija","essa Eu Fiz Pro Nosso Amor","Fim De Festa","Barcelona","Você Vai Me Destruir","VSF","Hotel San Diego",":((Nota De Voz 8)","Clarão","Não Te Amo","Idiota","Santo","Acontece","Você Me Perdeu","Meninos e Meninas","Coringa","Doce","Tempos de Glória","Olhos Vermelhos","Escorpião","Me Lambe","Gameboy","Alinhamento Milenar","Lábia","Maria","Julho","Eu Posso Ser Como Você","Sinais","Se O Problema Era Você, Por Que Doeu Em Mim?","Locadora","Rádio","São Paulo, 2015","Super"];
 var todas = [], tocadas = [], chance = 0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos = 0, multi, menu = true, modo = true;
-var debuttof = true, fearlesstof = true, speaknowtof = true, redtof = true, a1989tof = true, reputationtof = true, lovertof = true, folkloretof = true, evermoretof = true, midnightstof = true, ttpdtof = true;
+var debuttof = true, fearlesstof = true, speaknowtof = true, redtof = true, a1989tof = true, reputationtof = true, lovertof = true, folkloretof = true, evermoretof = true, midnightstof = true, ttpdtof = true, jaotof = false;
 var highscore = 0;
 if(localStorage.getItem("highscore") != null){
     highscore = Number(localStorage.getItem("highscore"));
