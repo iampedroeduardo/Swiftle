@@ -105,61 +105,6 @@ function albums(){
 function sorteia(){
     n = Math.floor(Math.random() * todas.length);
     musica = todas[n];
-    if(debut.includes(musica)){
-        debuttoc++;
-        albumatual = "Debut";
-        localStorage.setItem("debuttoc", debuttoc);
-    }
-    if(fearless.includes(musica)){
-        fearlesstoc++;
-        albumatual = "Fearless";
-        localStorage.setItem("fearlesstoc", fearlesstoc);
-    }
-    if(speaknow.includes(musica)){
-        speaknowtoc++;
-        albumatual = "Speak Now";
-        localStorage.setItem("speaknowtoc", speaknowtoc);
-    }
-    if(a1989.includes(musica)){
-        a1989toc++;
-        albumatual = "1989";
-        localStorage.setItem("a1989toc", a1989toc);
-    }
-    if(red.includes(musica)){
-        redtoc++;
-        albumatual = "Red";
-        localStorage.setItem("redtoc", redtoc);
-    }
-    if(reputation.includes(musica)){
-        reputationtoc++;
-        albumatual = "Reputation";
-        localStorage.setItem("reputationtoc", reputationtoc);
-    }
-    if(lover.includes(musica)){
-        lovertoc++;
-        albumatual = "Lover";
-        localStorage.setItem("lovertoc", lovertoc);
-    }
-    if(folklore.includes(musica)){
-        folkloretoc++;
-        albumatual = "Folklore";
-        localStorage.setItem("folkloretoc", folkloretoc);
-    }
-    if(evermore.includes(musica)){
-        evermoretoc++;
-        albumatual = "Evermore";
-        localStorage.setItem("evermoretoc", evermoretoc);
-    }
-    if(midnights.includes(musica)){
-        midnightstoc++;
-        albumatual = "Midnights";
-        localStorage.setItem("midnightstoc", midnightstoc);
-    }
-    if(ttpd.includes(musica)){
-        ttpdtoc++;
-        albumatual = "TTPD";
-        localStorage.setItem("ttpdtoc", ttpdtoc);
-    }
     audio = "audio/" + simplificaNome(musica) + ".mp3";
     audio = new Audio(audio);
     audio.preload = "auto";
@@ -231,6 +176,63 @@ function reinicia(){
 }
 function testa(){
     chute = input.value;
+    if(chance == 1){
+        if(debut.includes(musica)){
+            debuttoc++;
+            albumatual = "Debut";
+            localStorage.setItem("debuttoc", debuttoc);
+        }
+        if(fearless.includes(musica)){
+            fearlesstoc++;
+            albumatual = "Fearless";
+            localStorage.setItem("fearlesstoc", fearlesstoc);
+        }
+        if(speaknow.includes(musica)){
+            speaknowtoc++;
+            albumatual = "Speak Now";
+            localStorage.setItem("speaknowtoc", speaknowtoc);
+        }
+        if(a1989.includes(musica)){
+            a1989toc++;
+            albumatual = "1989";
+            localStorage.setItem("a1989toc", a1989toc);
+        }
+        if(red.includes(musica)){
+            redtoc++;
+            albumatual = "Red";
+            localStorage.setItem("redtoc", redtoc);
+        }
+        if(reputation.includes(musica)){
+            reputationtoc++;
+            albumatual = "Reputation";
+            localStorage.setItem("reputationtoc", reputationtoc);
+        }
+        if(lover.includes(musica)){
+            lovertoc++;
+            albumatual = "Lover";
+            localStorage.setItem("lovertoc", lovertoc);
+        }
+        if(folklore.includes(musica)){
+            folkloretoc++;
+            albumatual = "Folklore";
+            localStorage.setItem("folkloretoc", folkloretoc);
+        }
+        if(evermore.includes(musica)){
+            evermoretoc++;
+            albumatual = "Evermore";
+            localStorage.setItem("evermoretoc", evermoretoc);
+        }
+        if(midnights.includes(musica)){
+            midnightstoc++;
+            albumatual = "Midnights";
+            localStorage.setItem("midnightstoc", midnightstoc);
+        }
+        if(ttpd.includes(musica)){
+            ttpdtoc++;
+            albumatual = "TTPD";
+            localStorage.setItem("ttpdtoc", ttpdtoc);
+        }
+    }
     if(simplificaNome(chute) == simplificaNome(musica)){
         input.style = "background-color: lawngreen; color: white;";
         div.setAttribute("class", "disabled");
