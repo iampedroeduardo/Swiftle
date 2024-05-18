@@ -141,6 +141,22 @@
                 </svg>
                 <p style="color: rgb(203, 203, 180);">TTPD</p>
             </div>
+            <br>
+            <div>
+                <p style="font-size: 25px;">Estatísticas</p>
+                <svg width="20" height="20" onclick="Stats()" id="off">
+                    <line x1="2" y1="10" x2="10" y2="16" stroke="black" stroke-width="1"></line>
+                    <line x1="10" y1="16" x2="18" y2="10" stroke="black" stroke-width="1"></line>
+                </svg>
+                <svg width="20" height="20" style="display: none;" onclick="Stats()" id="on">
+                    <line x1="2" y1="16" x2="10" y2="10" stroke="black" stroke-width="1"></line>
+                    <line x1="10" y1="10" x2="18" y2="16" stroke="black" stroke-width="1"></line>
+                </svg>
+            </div>
+        </div>
+        <br>
+        <div id="stats">
+
         </div>
     </div>
     <script src="script.js"></script>

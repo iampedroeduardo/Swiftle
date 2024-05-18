@@ -151,10 +151,18 @@ p.title{
     align-items: center;
     margin-bottom: 5px;
 }
-.albums div p{
+.albums div p, .albumstats p{
     font-size: 20px;
     margin-left: 5px;
 }
+
 .nav svg{
     cursor: pointer;
+}
+#stats{
+    flex-direction: column;
+}
+.albumstats{
+    display: flex;
+    flex-direction: column;
 }

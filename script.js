@@ -105,6 +105,61 @@ function albums(){
 function sorteia(){
     n = Math.floor(Math.random() * todas.length);
     musica = todas[n];
+    if(debut.includes(musica)){
+        debuttoc++;
+        albumatual = "Debut";
+        localStorage.setItem("debuttoc", debuttoc);
+    }
+    if(fearless.includes(musica)){
+        fearlesstoc++;
+        albumatual = "Fearless";
+        localStorage.setItem("fearlesstoc", fearlesstoc);
+    }
+    if(speaknow.includes(musica)){
+        speaknowtoc++;
+        albumatual = "Speak Now";
+        localStorage.setItem("speaknowtoc", speaknowtoc);
+    }
+    if(a1989.includes(musica)){
+        a1989toc++;
+        albumatual = "1989";
+        localStorage.setItem("a1989toc", a1989toc);
+    }
+    if(red.includes(musica)){
+        redtoc++;
+        albumatual = "Red";
+        localStorage.setItem("redtoc", redtoc);
+    }
+    if(reputation.includes(musica)){
+        reputationtoc++;
+        albumatual = "Reputation";
+        localStorage.setItem("reputationtoc", reputationtoc);
+    }
+    if(lover.includes(musica)){
+        lovertoc++;
+        albumatual = "Lover";
+        localStorage.setItem("lovertoc", lovertoc);
+    }
+    if(folklore.includes(musica)){
+        folkloretoc++;
+        albumatual = "Folklore";
+        localStorage.setItem("folkloretoc", folkloretoc);
+    }
+    if(evermore.includes(musica)){
+        evermoretoc++;
+        albumatual = "Evermore";
+        localStorage.setItem("evermoretoc", evermoretoc);
+    }
+    if(midnights.includes(musica)){
+        midnightstoc++;
+        albumatual = "Midnights";
+        localStorage.setItem("midnightstoc", midnightstoc);
+    }
+    if(ttpd.includes(musica)){
+        ttpdtoc++;
+        albumatual = "TTPD";
+        localStorage.setItem("ttpdtoc", ttpdtoc);
+    }
     audio = "audio/" + simplificaNome(musica) + ".mp3";
     audio = new Audio(audio);
     audio.preload = "auto";
@@ -186,6 +241,50 @@ function testa(){
         circle.setAttribute("stroke-dashoffset", propcircle);
         audio.pause();
         audio.currentTime = 0;
+        if(albumatual == "Debut"){
+            debutac++
+            localStorage.setItem("debutac", debutac);
+        }
+        if(albumatual == "Fearless"){
+            fearlessac++
+            localStorage.setItem("fearlessac", fearlessac);
+        }
+        if(albumatual == "Speak Now"){
+            speaknowac++
+            localStorage.setItem("speaknowac", speaknowac);
+        }
+        if(albumatual == "Red"){
+            redac++
+            localStorage.setItem("redac", redac);
+        }
+        if(albumatual == "1989"){
+            a1989ac++
+            localStorage.setItem("a1989ac", a1989ac);
+        }
+        if(albumatual == "Reputation"){
+            reputationac++
+            localStorage.setItem("reputationac", reputationac);
+        }
+        if(albumatual == "Lover"){
+            loverac++
+            localStorage.setItem("loverac", loverac);
+        }
+        if(albumatual == "Folklore"){
+            folkloreac++
+            localStorage.setItem("folkloreac", folkloreac);
+        }
+        if(albumatual == "Evermore"){
+            evermoreac++
+            localStorage.setItem("evermoreac", evermoreac);
+        }
+        if(albumatual == "Midnights"){
+            midnightsac++
+            localStorage.setItem("midnightsac", midnightsac);
+        }
+        if(albumatual == "TTPD"){
+            ttpdac++
+            localStorage.setItem("ttpdac", ttpdac);
+        }
         if(modo){
             p = document.querySelector(".play");
             p.style = "display:block;"
@@ -245,16 +344,127 @@ function Menu(){
         audio.pause();
         audio.currentTime = 0;
         document.addEventListener("keyup",testaJao);
+        if(stats){
+            criaStats();
+        }
+        else{
+            document.querySelector("#stats").innerHTML = "";
+        }
     }
     else{
+        document.removeEventListener("keyup",testaJao);
         nav.style = "display: none;";
         main.style = "display: block;";
         linhas.style = "display: block;";
         xis.style = "display: none;";
         menu = !menu;
         reinicia();
-        document.removeEventListener("keyup");
     }
+}
+function Stats(){
+    stats = !stats;
+    if(stats){
+        document.querySelector("#off").style.display = "none";
+        document.querySelector("#on").style.display = "block";
+        criaStats();
+    }
+    else{
+        document.querySelector("#on").style.display = "none";
+        document.querySelector("#off").style.display = "block";
+        document.querySelector("#stats").innerHTML = "";
+    }
+}
+function criaStats(){
+    stats = `
+    <div class="albumstats">
+    <p style="color:lawngreen;">Taylor Swift(${parseInt(debutac/debuttoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="lawngreen" stroke="2"></rect>
+        <rect x="1" y="1" width="${debutac/debuttoc*250}" height="30" fill="lawngreen" stroke="lawngreen" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:#FFFF00;">Fearless(${parseInt(fearlessac/fearlesstoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="#FFFF00" stroke="2"></rect>
+        <rect x="1" y="1" width="${fearlessac/fearlesstoc*250}" height="30" fill="#FFFF00" stroke="#FFFF00" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:#D500FF;">Speak Now(${parseInt(speaknowac/speaknowtoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="#D500FF" stroke="2"></rect>
+        <rect x="1" y="1" width="${speaknowac/speaknowtoc*250}" height="30" fill="#D500FF" stroke="#D500FF" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:red;">Red(${parseInt(redac/redtoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="red" stroke="2"></rect>
+        <rect x="1" y="1" width="${redac/redtoc*250}" height="30" fill="red" stroke="red" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:cyan;">1989(${parseInt(a1989ac/a1989toc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="cyan" stroke="2"></rect>
+        <rect x="1" y="1" width="${a1989ac/a1989toc*250}" height="30" fill="cyan" stroke="cyan" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:black;">Reputation(${parseInt(reputationac/reputationtoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="black" stroke="2"></rect>
+        <rect x="1" y="1" width="${reputationac/reputationtoc*250}" height="30" fill="black" stroke="black" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:#ff00c8;">Lover(${parseInt(loverac/lovertoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="#ff00c8" stroke="2"></rect>
+        <rect x="1" y="1" width="${loverac/lovertoc*250}" height="30" fill="#ff00c8" stroke="#ff00c8" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:gray;">Folklore(${parseInt(folkloreac/folkloretoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="gray" stroke="2"></rect>
+        <rect x="1" y="1" width="${folkloreac/folkloretoc*250}" height="30" fill="gray" stroke="gray" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:rgb(141, 107, 53);">Evermore(${parseInt(evermoreac/evermoretoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="rgb(141, 107, 53)" stroke="2"></rect>
+        <rect x="1" y="1" width="${evermoreac/evermoretoc*250}" height="30" fill="rgb(141, 107, 53)" stroke="rgb(141, 107, 53)" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:rgb(0, 0, 176);">Midnights(${parseInt(midnightsac/midnightstoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="rgb(0, 0, 176)" stroke="2"></rect>
+        <rect x="1" y="1" width="${midnightsac/midnightstoc*250}" height="30" fill="rgb(0, 0, 176)" stroke="rgb(0, 0, 176)" stroke="2"></rect>
+    </svg>
+    </div>
+    <br>
+    <div class="albumstats">
+    <p style="color:rgb(203, 203, 180);">The Tortured Poets Department(${parseInt(ttpdac/ttpdtoc*100)}%)</p>
+    <svg width="300" height="34" class="stats">
+        <rect x="1" y="1" width="250" height="30" fill="rgb(228, 225, 225)" stroke="rgb(203, 203, 180)" stroke="2"></rect>
+        <rect x="1" y="1" width="${ttpdac/ttpdtoc*250}" height="30" fill="rgb(203, 203, 180)" stroke="rgb(203, 203, 180)" stroke="2"></rect>
+    </svg>
+    </div>
+    `
+    document.querySelector("#stats").innerHTML = stats;
 }
 function criaDatalist(n){
     datalist = document.createElement("div");
@@ -370,9 +580,6 @@ function derrota(){
     p = document.querySelector(".play");
     p.style = "display:block;"
     pontos = 0;
-    if(inputs != undefined){
-        inputs.parentNode.removeChild(inputs);
-    }
 }
 function conta(){
     contador++
@@ -575,11 +782,79 @@ var folklore = ["the 1","cardigan","the last great american dynasty","exile","my
 var evermore = ["willow","champagne problems","gold rush","'tis the damn season","tolerate it","no body, no crime","happiness","dorothea","coney island","ivy","cowboy like me","long story short","marjorie","closure","evermore","right where you left me","it's time to go"];
 var midnights = ["Lavender Haze","Maroon","Anti-Hero","Snow On The Beach","You're On Your Own, Kid","Midnight Rain","Question...?","Bejeweled","Vigilante Shit","Labyrinth","Karma","Sweet Nothing","Mastermind","The Great War","Bigger Than The Whole Sky","Paris","High Infidelity","Glitch","Would've, Could've, Should've","Dear Reader","Hits Different"];
 var ttpd = ["Fortnight","The Tortured Poets Department","My Boy Only Breaks His Favorite Toys","Down Bad","So Long, London","But Daddy I Love Him", "Fresh Out The Slammer","Florida!!!","Guilty as Sin?","Who's Afraid Of Little Old Me?","I Can Fix Him (No Really I Can)","loml","I Can Do It With a Broken Heart","The Smallest Man Who Ever Lived","The Alchemy","Clara Bow","The Black Dog","imgonnagetyouback","The Albatross","Chloe or Sam or Sophia or Marcus","How Did It End","So High School","I Hate It Here","thanK you aIMee","I Look in People's Windows","The Prophecy","Cassandra","Peter","The Bolter","Robin","The Manuscript"];
-var jao = ["Vou Morrer Sozinho","Me Beija Com Raiva","Lindo Demais","Imaturo","Ainda Te Amo","A Rua","Lobos","Eu Quero Ser Como Você","Aqui","Monstros","Fim do Mundo","Ressaca","A Última Noite","Triste Pra Sempre","Enquanto Me Beija","essa Eu Fiz Pro Nosso Amor","Fim De Festa","Barcelona","Você Vai Me Destruir","VSF","Hotel San Diego",":((Nota De Voz 8)","Clarão","Não Te Amo","Idiota","Santo","Acontece","Você Me Perdeu","Meninos e Meninas","Coringa","Doce","Tempos de Glória","Olhos Vermelhos","Escorpião","Me Lambe","Gameboy","Alinhamento Milenar","Lábia","Maria","Julho","Eu Posso Ser Como Você","Sinais","Se O Problema Era Você, Por Que Doeu Em Mim?","Locadora","Rádio","São Paulo, 2015","Super"];
-var todas = [], tocadas = [], chance = 0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos = 0, multi, menu = true, modo = true;
+var jao = ["Vou Morrer Sozinho","Me Beija Com Raiva","Lindo Demais","Imaturo","Ainda Te Amo","A Rua","Lobos","Eu Quero Ser Como Você","Aqui","Monstros","Fim do Mundo","Ressaca","A Última Noite","Triste Pra Sempre","Enquanto Me Beija","Essa Eu Fiz Pro Nosso Amor","Fim De Festa","Barcelona","Você Vai Me Destruir","VSF","Hotel San Diego",":((Nota De Voz 8)","Clarão","Não Te Amo","Idiota","Santo","Acontece","Você Me Perdeu","Meninos e Meninas","Coringa","Doce","Tempos de Glória","Olhos Vermelhos","Escorpião","Me Lambe","Gameboy","Alinhamento Milenar","Lábia","Maria","Julho","Eu Posso Ser Como Você","Sinais","Se O Problema Era Você, Por Que Doeu Em Mim?","Locadora","Rádio","São Paulo, 2015","Super"];
+var todas = [], tocadas = [], chance = 0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos = 0, multi, albumatual, stats = false, menu = true, modo = true;
 var debuttof = true, fearlesstof = true, speaknowtof = true, redtof = true, a1989tof = true, reputationtof = true, lovertof = true, folkloretof = true, evermoretof = true, midnightstof = true, ttpdtof = true, jaotof = false;
+var debutac = 0, fearlessac = 0, speaknowac = 0, redac = 0, a1989ac = 0, reputationac = 0, loverac = 0, folkloreac = 0, evermoreac = 0, midnightsac = 0, ttpdac = 0;
+var debuttoc = 0, fearlesstoc = 0, speaknowtoc = 0, redtoc = 0, a1989toc = 0, reputationtoc = 0, lovertoc = 0, folkloretoc = 0, evermoretoc = 0, midnightstoc = 0, ttpdtoc = 0;
 var highscore = 0;
 if(localStorage.getItem("highscore") != null){
     highscore = Number(localStorage.getItem("highscore"));
+}
+if(localStorage.getItem("debutac") != null){
+    debutac = Number(localStorage.getItem("debutac"));
+}
+if(localStorage.getItem("fearlessac") != null){
+    fearlessac = Number(localStorage.getItem("fearlessac"));
+}
+if(localStorage.getItem("speaknowac") != null){
+    speaknowac = Number(localStorage.getItem("speaknowac"));
+}
+if(localStorage.getItem("redac") != null){
+    redac = Number(localStorage.getItem("redac"));
+}
+if(localStorage.getItem("a1989ac") != null){
+    a1989ac = Number(localStorage.getItem("a1989ac"));
+}
+if(localStorage.getItem("reputationac") != null){
+    reputationac = Number(localStorage.getItem("reputationac"));
+}
+if(localStorage.getItem("loverac") != null){
+    loverac = Number(localStorage.getItem("loverac"));
+}
+if(localStorage.getItem("folkloreac") != null){
+    folkloreac = Number(localStorage.getItem("folkloreac"));
+}
+if(localStorage.getItem("evermoreac") != null){
+    evermoreac = Number(localStorage.getItem("evermoreac"));
+}
+if(localStorage.getItem("midnightsac") != null){
+    midnightsac = Number(localStorage.getItem("midnightsac"));
+}
+if(localStorage.getItem("ttpdac") != null){
+    ttpdac = Number(localStorage.getItem("ttpdac"));
+}
+if(localStorage.getItem("debuttoc") != null){
+    debuttoc = Number(localStorage.getItem("debuttoc"));
+}
+if(localStorage.getItem("fearlesstoc") != null){
+    fearlesstoc = Number(localStorage.getItem("fearlesstoc"));
+}
+if(localStorage.getItem("speaknowtoc") != null){
+    speaknowtoc = Number(localStorage.getItem("speaknowtoc"));
+}
+if(localStorage.getItem("redtoc") != null){
+    redtoc = Number(localStorage.getItem("redtoc"));
+}
+if(localStorage.getItem("a1989toc") != null){
+    a1989toc = Number(localStorage.getItem("a1989toc"));
+}
+if(localStorage.getItem("reputationtoc") != null){
+    reputationtoc = Number(localStorage.getItem("reputationtoc"));
+}
+if(localStorage.getItem("lovertoc") != null){
+    lovertoc = Number(localStorage.getItem("lovertoc"));
+}
+if(localStorage.getItem("folkloretoc") != null){
+    folkloretoc = Number(localStorage.getItem("folkloretoc"));
+}
+if(localStorage.getItem("evermoretoc") != null){
+    evermoretoc = Number(localStorage.getItem("evermoretoc"));
+}
+if(localStorage.getItem("midnightstoc") != null){
+    midnightstoc = Number(localStorage.getItem("midnightstoc"));
+}
+if(localStorage.getItem("ttpdtoc") != null){
+    ttpdtoc = Number(localStorage.getItem("ttpdtoc"));
 }
 prepara();
