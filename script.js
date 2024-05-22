@@ -4,6 +4,15 @@ function prepara(){
     criaInputs();
     trocaChance();
 }
+function teste(vetor){
+    for(c=0;c<vetor.length;c++){
+        audio1 = new Audio(simplificaNome(vetor[c]));
+        audio1.play();
+        setTimeOut(()=>{
+           audio1.pause(); 
+        },10000);
+    }
+}
 function criaInputs(){
     inputs = document.createElement("div");
     inputs.setAttribute("id","inputs");
