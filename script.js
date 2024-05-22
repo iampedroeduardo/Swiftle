@@ -6,7 +6,7 @@ function prepara(){
 }
 function teste(vetor){
     for(c=0;c<vetor.length;c++){
-        audio1 = new Audio(simplificaNome(vetor[c]));
+        audio1 = new Audio("audio/"simplificaNome(vetor[c])+".mp4");
         audio1.play();
         setTimeOut(()=>{
            audio1.pause(); 
