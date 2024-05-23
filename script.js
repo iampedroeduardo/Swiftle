@@ -4,15 +4,6 @@ function prepara(){
     criaInputs();
     trocaChance();
 }
-function teste(vetor){
-    for(c=0;c<vetor.length;c++){
-        audio1 = new Audio("audio/"+simplificaNome(vetor[c])+".mp4");
-        audio1.play();
-        setTimeout(()=>{
-           audio1.pause(); 
-        },10000);
-    }
-}
 function criaInputs(){
     inputs = document.createElement("div");
     inputs.setAttribute("id","inputs");
@@ -792,7 +783,7 @@ var reputation = ["...Ready For It?","Endgame","I Did Something Bad","Don't Blam
 var lover = ["I Forgot That You Existed","Cruel Summer","Lover","The Man","The Archer","Paper Rings","Miss Americana And The Heartbreak Prince","Death By A Thousand Cuts","You Need To Calm Down","ME!","Afterglow","Daylight","False God","London Boy","I Think He Knows","Cornelia Street","Soon You'll Get Better","It's Nice To Have A Friend","All Of The Girls You Loved Before"];
 var folklore = ["the 1","cardigan","the last great american dynasty","exile","my tears ricochet","mirrorball","seven","august","this is me trying","illicit affairs","invisible string","mad woman","epiphany","betty","peace","hoax","the lakes"];
 var evermore = ["willow","champagne problems","gold rush","'tis the damn season","tolerate it","no body, no crime","happiness","dorothea","coney island","ivy","cowboy like me","long story short","marjorie","closure","evermore","right where you left me","it's time to go"];
-var midnights = ["Lavender Haze","Maroon","Anti-Hero","Snow On The Beach","You're On Your Own, Kid","Midnight Rain","Question...?","Bejeweled","Vigilante Shit","Labyrinth","Karma","Sweet Nothing","Mastermind","The Great War","Bigger Than The Whole Sky","Paris","High Infidelity","Glitch","Would've, Could've, Should've","Dear Reader","Hits Different"];
+var midnights = ["Lavender Haze","Maroon","Anti-Hero","Snow On The Beach","You're On Your Own, Kid","Midnight Rain","Question...?","Bejeweled","Vigilante Shit","Labyrinth","Karma","Sweet Nothing","Mastermind","The Great War","Bigger Than The Whole Sky","Paris","High Infidelity","Glitch","Would've, Could've, Should've","Dear Reader","Hits Different","You're Losing Me"];
 var ttpd = ["Fortnight","The Tortured Poets Department","My Boy Only Breaks His Favorite Toys","Down Bad","So Long, London","But Daddy I Love Him", "Fresh Out The Slammer","Florida!!!","Guilty as Sin?","Who's Afraid Of Little Old Me?","I Can Fix Him (No Really I Can)","loml","I Can Do It With a Broken Heart","The Smallest Man Who Ever Lived","The Alchemy","Clara Bow","The Black Dog","imgonnagetyouback","The Albatross","Chloe or Sam or Sophia or Marcus","How Did It End","So High School","I Hate It Here","thanK you aIMee","I Look in People's Windows","The Prophecy","Cassandra","Peter","The Bolter","Robin","The Manuscript"];
 var jao = ["Vou Morrer Sozinho","Me Beija Com Raiva","Lindo Demais","Imaturo","Ainda Te Amo","A Rua","Lobos","Eu Quero Ser Como Você","Aqui","Monstros","Fim do Mundo","Ressaca","A Última Noite","Triste Pra Sempre","Enquanto Me Beija","Essa Eu Fiz Pro Nosso Amor","Fim De Festa","Barcelona","Você Vai Me Destruir","VSF","Hotel San Diego",":((Nota De Voz 8)","Clarão","Não Te Amo","Idiota","Santo","Acontece","Você Me Perdeu","Meninos e Meninas","Coringa","Doce","Tempos de Glória","Olhos Vermelhos","Escorpião","Me Lambe","Gameboy","Alinhamento Milenar","Lábia","Maria","Julho","Eu Posso Ser Como Você","Sinais","Se O Problema Era Você, Por Que Doeu Em Mim?","Locadora","Rádio","São Paulo, 2015","Super"];
 var todas = [], tocadas = [], chance = 0, div, input, button, comprimento, propcircle, contador, intervalo, circle, audio, musica, inputs, datalist, pontos = 0, multi, albumatual, stats = false, menu = true, modo = true, tocada = false;
