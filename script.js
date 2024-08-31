@@ -1,3 +1,8 @@
+async function teste(){
+    let api = await fetch("https://teste-vercel-rosy-three.vercel.app/api/teste");
+    let json = await api.json();
+    alert(json.teste);
+}
 function prepara(){
     albums();
     sorteia();
@@ -861,3 +866,4 @@ if(localStorage.getItem("ttpdtoc") != null){
     ttpdtoc = Number(localStorage.getItem("ttpdtoc"));
 }
 prepara();
+teste();
