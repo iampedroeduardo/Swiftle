@@ -138,7 +138,7 @@ function trocaChance(){
     datalist = document.getElementById("datalist" + chance)
     raio = Number(circle.getAttribute("r"));
     comprimento = Math.PI * 2 * raio;
-    propcircle = -1 * comprimento * (1 / 6 * (6 - chance + chance + chance + 1));
+    propcircle = -1 * comprimento * (1 / 6 * (6  + chance + 1));
     if(!modo){
         propcircle = -464.9557127312894;
     }
