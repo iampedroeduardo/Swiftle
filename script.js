@@ -1,7 +1,7 @@
 async function teste(){
     let api = await fetch("https://teste-vercel-rosy-three.vercel.app/api/teste");
     let json = await api.json();
-    alert(json.teste);
+    console.log(json);
 }
 function prepara(){
     albums();
